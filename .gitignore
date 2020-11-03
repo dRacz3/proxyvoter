@@ -1,2 +1,4 @@
 .ve/
-.ipynb
+*.ipynb
+.ipynb_checkpoints
+.idea
