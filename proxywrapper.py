@@ -19,5 +19,6 @@ def fetch_gimme_proxy():
 def get_proxies_from_file(filename : str) -> List[str]:
     endline = '\n'
     with open(filename) as file:
-        proxies = [f'http://{address.replace(endline, "")}' for address in file.readlines()]
-    return list(dict.fromkeys(proxies))
+        lines = list(dict.fromkeys(file.readlines()))
+        proxies = [f'http://{address.replace(endline, "")}' for address in lines]
+    return proxies
