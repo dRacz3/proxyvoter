@@ -60,15 +60,15 @@ def start_mass_vote(nid, proxies, timeout = 60):
     logger.info(f'Finished, {success_count}/{len(proxies)} succeeded vote.')
 
 
-if __name__ == '__main__':
-    JASPER_NID = 779
-    MANO_NID = 882
-    ARCHIE = 813
-    BONIFAC = 869
-    GOKU = 612
-    print('Can i see this in logs?')
-    proxy_list = get_proxies_from_file('proxies.txt')
-    logger.info(f'Loaded {len(proxy_list)} unique proxies from file')
-    while True:
-        start_mass_vote(GOKU, proxy_list, timeout=180)
-        time.sleep(3600+random.randint(1,180))
+
+JASPER_NID = 779
+MANO_NID = 882
+ARCHIE = 813
+BONIFAC = 869
+GOKU = 612
+print('Can i see this in logs?')
+proxy_list = get_proxies_from_file('proxies.txt')
+logger.info(f'Loaded {len(proxy_list)} unique proxies from file')
+while True:
+    start_mass_vote(GOKU, proxy_list, timeout=180)
+    time.sleep(3600+random.randint(1,180))
