@@ -1,1 +1,1 @@
-worker: python jaspyr.py
+web: gunicorn app:app
