@@ -5,9 +5,8 @@ import requests
 import time
 import random
 
+from InVariableLogger import FIFOIO
 from proxywrapper import get_proxies_from_file
-
-
 
 def vote_link(nid):
     return f'http://ebadta.hu/verseny/votegw.php?nid={nid}'
@@ -16,6 +15,17 @@ def get_doggo_page(nid):
     return f'http://ebadta.hu/verseny/versenyzo.php?nid={nid}'
 
 def start_mass_vote(nid, proxies, logger, timeout = 60):
+    if logger is None:
+        logger = logging.getLogger('app')
+        logger.setLevel(logging.DEBUG)
+        log_capture_string = FIFOIO(1024 ** 2)
+        ch = logging.StreamHandler(log_capture_string)
+        ch.setLevel(logging.DEBUG)
+
+        ### Optionally add a formatter
+        formatter = logging.Formatter('[%(asctime)s] [%(threadName)s] %(levelname)s - %(message)s </br>')
+        ch.setFormatter(formatter)
+
     logger.info(f'start_mass_vote called with nid: {nid}')
     request_threads = []
     success_count = 0
