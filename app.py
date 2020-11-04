@@ -61,8 +61,7 @@ VotingExecutorDAO = VotingExecutor()
 
 @app.route('/')
 def hello_world():
-    return 'Hello stranger, vanna vote for some doggos?'
-
+    return '''Hello stranger, vanna vote for some doggos? Checkout /vote/nid !'''
 
 @app.route('/vote/<nid>')
 def vote(nid):

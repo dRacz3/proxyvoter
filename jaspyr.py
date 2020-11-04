@@ -31,7 +31,10 @@ def start_mass_vote(nid, proxies, logger, timeout = 60):
             nonlocal success_count
             nonlocal logger
             try:
-                _ = requests.get(get_doggo_page(nid), proxies=proxy, timeout=5)
+                try:
+                    _ = requests.get(get_doggo_page(nid), proxies=proxy, timeout=5)
+                except Exception as e:
+                    logger.info('Failed to fetch site, but will try to vote anyway.')
                 time.sleep(random.randint(1,3000) / 1000)
                 r = requests.get(vote_link(nid), proxies=proxy, timeout=timeout)
                 if '1' == r.content.decode():
