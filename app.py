@@ -67,7 +67,7 @@ def hello_world():
 @app.route('/vote/<nid>')
 def vote(nid):
     proxy_list = get_proxies_from_file('proxies.txt')[0:2]
-    VotingExecutorDAO.push(lambda : start_mass_vote(nid, proxy_list, logger=logger, timeout=2))
+    start_mass_vote(nid, proxy_list, logger=logger, timeout=2)
     return f'Voting for {nid} started!'
 
 @app.route('/logs')
