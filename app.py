@@ -65,8 +65,8 @@ def hello_world():
 
 @app.route('/vote/<nid>')
 def vote(nid):
-    proxy_list = get_proxies_from_file('proxies.txt')[0:2]
-    start_mass_vote(nid, proxy_list, logger=logger, timeout=20)
+    proxy_list = get_proxies_from_file('proxies.txt')
+    start_mass_vote(nid, proxy_list, logger=logger, timeout=15)
     return log_capture_string.getvalue()
 
 @app.route('/logs')
