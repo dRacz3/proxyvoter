@@ -14,7 +14,7 @@ def vote_link(nid):
 def get_doggo_page(nid):
     return f'http://ebadta.hu/verseny/versenyzo.php?nid={nid}'
 
-def start_mass_vote(nid, proxies, logger, timeout = 60):
+def start_mass_vote(nid, proxies, logger = None, timeout = 60):
     if logger is None:
         logger = logging.getLogger('app')
         logger.setLevel(logging.DEBUG)
