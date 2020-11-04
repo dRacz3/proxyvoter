@@ -33,6 +33,11 @@ logger.addHandler(sh)
 ### Add the console handler to the logger
 logger.addHandler(ch)
 
+from rq import Queue
+from worker import conn
+
+q = Queue(connection=conn)
+
 from jaspyr import start_mass_vote
 
 
