@@ -31,11 +31,8 @@ def start_mass_vote(nid, proxies, logger, timeout = 60):
             nonlocal success_count
             nonlocal logger
             try:
-                sleep_time = random.randint(1, 180)
-                logger.info(f"Sleeping for {sleep_time} sec , voting from {p} will be started after that")
-                time.sleep(sleep_time)
                 _ = requests.get(get_doggo_page(nid), proxies=proxy, timeout=5)
-                time.sleep(random.randint(1,10))
+                time.sleep(random.randint(1,3000) / 1000)
                 r = requests.get(vote_link(nid), proxies=proxy, timeout=timeout)
                 if '1' == r.content.decode():
                     logger.info('Vote succeeded!')
