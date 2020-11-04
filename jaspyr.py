@@ -27,7 +27,6 @@ def start_mass_vote(nid, proxies, logger = None, timeout = 60):
         ch.setFormatter(formatter)
 
     logger.info(f'start_mass_vote called with nid: {nid}')
-    request_threads = []
     success_count = 0
     for p in proxies:
 
@@ -56,12 +55,8 @@ def start_mass_vote(nid, proxies, logger = None, timeout = 60):
             except Exception as e:
                 logger.info(f"Failed to vote from {p}, error : {e}")
 
-        t = threading.Thread(target=vote)
-        request_threads.append(t)
-        t.start()
+        vote()
 
-
-    [t.join() for t in request_threads]
     logger.info(f'Finished, {success_count}/{len(proxies)} succeeded vote.')
 
 
